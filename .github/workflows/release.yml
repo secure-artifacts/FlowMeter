@@ -1,0 +1,61 @@
+name: Release FlowMeter
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  id-token: write
+  contents: write
+  attestations: write
+
+jobs:
+  release:
+    name: Build, attest and release Windows portable package
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout tagged source
+        uses: actions/checkout@v4
+
+      - name: Build final v1.0.0 portable package
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $version = '${{ github.ref_name }}'
+          $declaredVersion = (Get-Content -LiteralPath 'VERSION' -Raw -Encoding UTF8).Trim()
+          if ($version -ne $declaredVersion) {
+            throw "Tag $version does not match VERSION file $declaredVersion."
+          }
+
+          $dist = Join-Path $env:GITHUB_WORKSPACE 'dist'
+          $stageRoot = Join-Path $env:RUNNER_TEMP 'FlowMeter-package'
+          $stage = Join-Path $stageRoot 'FlowMeter'
+          Remove-Item -LiteralPath $dist -Recurse -Force -ErrorAction SilentlyContinue
+          Remove-Item -LiteralPath $stageRoot -Recurse -Force -ErrorAction SilentlyContinue
+          New-Item -ItemType Directory -Path $dist, $stage -Force | Out-Null
+
+          Copy-Item -LiteralPath 'FlowMeter.FirstVersion.ps1' -Destination $stage
+          Copy-Item -LiteralPath 'Start-FlowMeter.bat' -Destination $stage
+          Copy-Item -LiteralPath 'Modules' -Destination $stage -Recurse
+          Copy-Item -LiteralPath 'README.md' -Destination (Join-Path $stage 'README.txt')
+          Copy-Item -LiteralPath 'VERSION' -Destination $stage
+
+          $zipName = "FlowMeter-$version-windows-portable.zip"
+          $zipPath = Join-Path $dist $zipName
+          Compress-Archive -LiteralPath $stage -DestinationPath $zipPath -CompressionLevel Optimal -Force
+          $hash = (Get-FileHash -LiteralPath $zipPath -Algorithm SHA256).Hash.ToLowerInvariant()
+          Set-Content -LiteralPath (Join-Path $dist 'SHA256SUMS.txt') -Value "$hash  $zipName" -NoNewline -Encoding ascii
+
+      - name: Attest final Release assets
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: 'dist/*'
+
+      - name: Create GitHub Release from the same attested assets
+        uses: softprops/action-gh-release@v2
+        with:
+          name: FlowMeter ${{ github.ref_name }}
+          body_path: RELEASE_NOTES.md
+          files: dist/*

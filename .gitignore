@@ -1,0 +1,11 @@
+# macOS metadata
+.DS_Store
+
+# FlowMeter runtime state
+FlowMeter.profile.json
+FlowMeter.startup-error.log
+
+# Local package output and temporary build data
+dist/
+release-staging/
+*.tmp
