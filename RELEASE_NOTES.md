@@ -1,10 +1,6 @@
-# FlowMeter v1.0.1
+# FlowMeter v1.0.0
 
-这是 FlowMeter 的文档澄清发布版本，面向 Windows 上使用 VoiceMeeter Banana 或 Potato 进行会议音频路由的用户。
-
-## 本版本修正
-
-明确说明 FlowMeter 与 VoiceMeeter 的关系：FlowMeter 是免安装的辅助配置工具；VoiceMeeter 是必须预先安装并运行的虚拟音频混音软件。
+这是 FlowMeter 的首个正式免安装发布版本，面向 Windows 上使用 VoiceMeeter Banana 或 Potato 进行会议音频路由的用户。
 
 ## 本版本包含
 
@@ -18,12 +14,12 @@
 
 ## 下载与运行
 
-下载 `FlowMeter-v1.0.1-windows-portable.zip`，解压后双击 `Start-FlowMeter.bat` 即可。**FlowMeter 解压即可使用；使用前请先安装并运行 VoiceMeeter Banana 或 Potato。FlowMeter 用于辅助配置，不替代 VoiceMeeter。**
+下载 `FlowMeter-v1.0.0-windows-portable.zip`，解压后双击 `Start-FlowMeter.bat` 即可。**FlowMeter 解压即可使用；使用前请先安装并运行 VoiceMeeter Banana 或 Potato。FlowMeter 用于辅助配置，不替代 VoiceMeeter。**
 
 ## 发布来源验证
 
 本 Release 的 ZIP 与 SHA256 校验文件均由 GitHub Actions 在同一 tag 构建中生成、证明并上传。下载 ZIP 后，可执行以下命令验证来源：
 
 ```powershell
-gh attestation verify .\FlowMeter-v1.0.1-windows-portable.zip --repo secure-artifacts/FlowMeter
+gh attestation verify .\FlowMeter-v1.0.0-windows-portable.zip --repo secure-artifacts/FlowMeter
 ```
