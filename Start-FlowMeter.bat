@@ -1,6 +1,6 @@
 @echo off
 setlocal
-set "FLOWMETER_VERSION=v1.0.0"
+set "FLOWMETER_VERSION=v1.0.1"
 cd /d "%~dp0"
 set "LOG=%~dp0FlowMeter.startup-error.log"
 if exist "%LOG%" del /q "%LOG%"

@@ -19,7 +19,7 @@ jobs:
       - name: Checkout tagged source
         uses: actions/checkout@v4
 
-      - name: Build final v1.0.0 portable package
+      - name: Build final portable package
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'

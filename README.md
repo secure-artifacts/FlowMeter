@@ -1,4 +1,4 @@
-# FlowMeter v1.0.0
+# FlowMeter v1.0.1
 
 **Windows 便携式 VoiceMeeter 音频路由配置工具。** FlowMeter 通过“通道 1 / 通道 2 / 通道 3”帮助用户整理声音来源软件、接收声音软件、说话需求与监听设备，并生成逐项设置建议。它可同步部分 Windows 默认音频设备与 VoiceMeeter 可控路由；会议网页或会议客户端内部的设备选择仍需用户按提示手动完成。
 
@@ -14,11 +14,11 @@
 
 ## 系统要求
 
-FlowMeter 适用于 **Windows 10 或 Windows 11 64 位**。电脑需要预先安装并运行 **VoiceMeeter Banana 或 VoiceMeeter Potato**；FlowMeter 本身为免安装 ZIP，不安装或替代 VoiceMeeter。通道 3 仅在 Potato 模式可用。
+FlowMeter 适用于 **Windows 10 或 Windows 11 64 位**。**FlowMeter 解压即可使用；使用前请先安装并运行 VoiceMeeter Banana 或 Potato。FlowMeter 用于辅助配置，不替代 VoiceMeeter。** 通道 3 仅在 Potato 模式可用。
 
 ## 下载与运行
 
-1. 在 [Releases](https://github.com/secure-artifacts/FlowMeter/releases) 下载最新的 `FlowMeter-v1.0.0-windows-portable.zip`。
+1. 在 [Releases](https://github.com/secure-artifacts/FlowMeter/releases) 下载最新的 `FlowMeter-v1.0.1-windows-portable.zip`。
 2. 解压 ZIP 到任意本地文件夹，例如 `D:\FlowMeter`。
 3. 双击 `Start-FlowMeter.bat`。
 4. 先开启需要的通道，再选择声音来源软件、接收声音软件、说话需求和监听设备。
@@ -56,4 +56,4 @@ gh attestation verify .\FlowMeter-v1.0.0-windows-portable.zip --repo secure-arti
 
 ## 版本
 
-当前正式版本：**v1.0.0**。
+当前正式版本：**v1.0.1**。

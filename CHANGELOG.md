@@ -1,5 +1,9 @@
 # 更新记录
 
+## v1.0.1 — 文档澄清
+
+修正 FlowMeter 与 VoiceMeeter 的安装关系说明。FlowMeter 解压即可使用；使用前仍需先安装并运行 VoiceMeeter Banana 或 Potato。FlowMeter 用于辅助配置，不替代 VoiceMeeter。
+
 ## v1.0.0 — 首个正式发布
 
 FlowMeter v1.0.0 是首个面向 Windows VoiceMeeter Banana 与 Potato 用户的免安装正式版本。该版本提供通道 1、通道 2 和通道 3 的声音路由声明、声音来源软件与接收声音软件的多选配置、说话和监听需求、动态设置建议、Windows 可控音频端点恢复、VoiceMeeter 路由写入以及本地配置自动保存。
